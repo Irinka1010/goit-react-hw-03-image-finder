@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import Loader from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
+import Modal from 'components/Modal/Modal';
 import fetchImages from '../../Services/app';
 
 export default class ImageGallery extends Component {
@@ -11,8 +11,10 @@ export default class ImageGallery extends Component {
     loading: false,
     error: null,
     showButton: true,
+    bigPicture: null,
     pictures: [],
     page: 1,
+    modalOpen: false,
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -60,17 +62,30 @@ export default class ImageGallery extends Component {
       page: prevState.page + 1,
     }));
   };
+  toggleModal = picture => {
+    this.setState(({ modalOpen }) => ({ modalOpen: !modalOpen }));
+    this.setState({ bigPicture: picture });
+  };
 
   render() {
-    const { pictures, loading, error } = this.state;
-    const { nameImages } = this.props;
-    const { loadMore } = this;
+    const { pictures, loading, bigPicture, error, modalOpen } = this.state;
+    // const { nameImages } = this.props;
+    const { loadMore, toggleModal } = this;
     const isPictures = Boolean(pictures.length);
     return (
       <div>
         {loading && <Loader />}
+        {modalOpen && (
+          <Modal
+            pictures={pictures}
+            toggleModal={this.toggleModal}
+            bigPicture={bigPicture}
+          />
+        )}
         {error && <p>Спрабуйте пізніше</p>}
-        {isPictures && <ImageGalleryItem pictures={pictures} />}
+        {isPictures && (
+          <ImageGalleryItem onClick={toggleModal} pictures={pictures} />
+        )}
         {isPictures && <Button changePage={loadMore} />}
       </div>
     );
