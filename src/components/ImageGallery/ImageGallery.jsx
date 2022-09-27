@@ -7,7 +7,6 @@ import fetchImages from '../../Services/app';
 
 export default class ImageGallery extends Component {
   state = {
-    status: 'idle',
     loading: false,
     error: null,
     showButton: true,
@@ -45,7 +44,9 @@ export default class ImageGallery extends Component {
         pictures: [...state.pictures, ...picture],
         loading: false,
       }));
-      console.log(picture);
+      // if (picture.length === 0) {
+      //   alert ('Sorry, we can't find anyting for your request. Please, enter another request')
+      // }
     } catch (error) {
       this.setState({
         error,
@@ -62,29 +63,31 @@ export default class ImageGallery extends Component {
       page: prevState.page + 1,
     }));
   };
-  toggleModal = picture => {
-    this.setState(({ modalOpen }) => ({ modalOpen: !modalOpen }));
-    this.setState({ bigPicture: picture });
+  openModal = bigPicture => {
+    this.setState({
+      modalOpen: true,
+      bigPicture,
+    });
+    console.log(bigPicture);
   };
-
+  closeModal = () => {
+    this.setState({
+      modalOpen: false,
+      bigPicture: null,
+    });
+  };
   render() {
     const { pictures, loading, bigPicture, error, modalOpen } = this.state;
-    // const { nameImages } = this.props;
-    const { loadMore, toggleModal } = this;
+
+    const { loadMore, openModal, closeModal } = this;
     const isPictures = Boolean(pictures.length);
     return (
       <div>
         {loading && <Loader />}
-        {modalOpen && (
-          <Modal
-            pictures={pictures}
-            toggleModal={this.toggleModal}
-            bigPicture={bigPicture}
-          />
-        )}
+        {modalOpen && <Modal onClose={closeModal} bigPicture={bigPicture} />}
         {error && <p>Спрабуйте пізніше</p>}
         {isPictures && (
-          <ImageGalleryItem onClick={toggleModal} pictures={pictures} />
+          <ImageGalleryItem onClick={openModal} pictures={pictures} />
         )}
         {isPictures && <Button changePage={loadMore} />}
       </div>

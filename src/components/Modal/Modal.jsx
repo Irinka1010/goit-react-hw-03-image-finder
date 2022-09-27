@@ -22,12 +22,11 @@ export default class Modal extends Component {
   };
 
   render() {
-    const { hendeleBackdropClick } = this;
-    const { largeImageURL, tags } = this.props.bigPicture;
+    const { bigPicture } = this.props;
     return createPortal(
-      <div className={css.ModalBackdrop} onClick={hendeleBackdropClick}>
+      <div className={css.ModalBackdrop} onClick={this.hendeleBackdropClick}>
         <div className={css.ModalContent}>
-          <img src={largeImageURL} alt={tags} />
+          <img src={bigPicture} alt="" />
         </div>
       </div>,
       modalRoot
