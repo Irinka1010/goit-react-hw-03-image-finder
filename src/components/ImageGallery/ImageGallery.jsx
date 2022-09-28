@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import Loader from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
@@ -9,7 +11,6 @@ export default class ImageGallery extends Component {
   state = {
     loading: false,
     error: null,
-    showButton: true,
     bigPicture: null,
     pictures: [],
     page: 1,
@@ -44,9 +45,9 @@ export default class ImageGallery extends Component {
         pictures: [...state.pictures, ...picture],
         loading: false,
       }));
-      // if (picture.length === 0) {
-      //   alert ('Sorry, we can't find anyting for your request. Please, enter another request')
-      // }
+      if (picture.length === 0) {
+        toast.info('Sorry, request not found, try something else');
+      }
     } catch (error) {
       this.setState({
         error,

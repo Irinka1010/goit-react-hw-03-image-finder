@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { toast } from 'react-toastify';
+import { SearchbarStyled } from 'components/Searchbar/StyledSearchbar';
 export default class Searchbar extends Component {
   state = {
     nameImages: '',
@@ -13,8 +14,7 @@ export default class Searchbar extends Component {
   hendleSubmit = ev => {
     ev.preventDefault();
     if (this.state.nameImages.trim() === '') {
-      alert('Enter the name of the image');
-
+      toast.error('Enter the name of the image');
       return;
     }
     this.props.onSudmit(this.state.nameImages);
@@ -26,14 +26,12 @@ export default class Searchbar extends Component {
     const { hendleNameChange, hendleSubmit } = this;
     const { nameImages } = this.state;
     return (
-      <header class="searchbar">
-        <form class="form" onSubmit={hendleSubmit}>
-          <button type="submit" class="button">
-            <span class="button-label">Search</span>
+      <SearchbarStyled>
+        <form onSubmit={hendleSubmit}>
+          <button type="submit">
+            <span>Search</span>
           </button>
-
           <input
-            class="input"
             type="text"
             autocomplete="off"
             autofocus
@@ -43,7 +41,7 @@ export default class Searchbar extends Component {
             onChange={hendleNameChange}
           />
         </form>
-      </header>
+      </SearchbarStyled>
     );
   }
 }

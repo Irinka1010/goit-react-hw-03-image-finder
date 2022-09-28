@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ImageGallery } from 'components/ImageGalleryItem/StyledImageGalleryItem ';
 export default function ImageGalleryItem({ pictures, onClick }) {
   const elements = pictures.map(({ id, webformatURL, tag, largeImageURL }) => (
     <li key={id}>
@@ -10,7 +11,7 @@ export default function ImageGalleryItem({ pictures, onClick }) {
       />
     </li>
   ));
-  return <ul> {elements}</ul>;
+  return <ImageGallery> {elements}</ImageGallery>;
 }
 
 ImageGalleryItem.propTypes = {
