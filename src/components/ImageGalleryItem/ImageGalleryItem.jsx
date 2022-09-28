@@ -1,25 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageGallery } from 'components/ImageGalleryItem/StyledImageGalleryItem ';
-export default function ImageGalleryItem({ pictures, onClick }) {
-  const elements = pictures.map(({ id, webformatURL, tag, largeImageURL }) => (
-    <li key={id}>
+import { GalleryIteItem } from 'components/ImageGalleryItem/StyledImageGalleryItem ';
+export default function ImageGalleryItem({
+  webformatURL,
+  id,
+  tag,
+  largeImageURL,
+  onClick,
+}) {
+  return (
+    <GalleryIteItem>
       <img
         src={webformatURL}
         alt={tag}
         onClick={() => onClick(largeImageURL)}
       />
-    </li>
-  ));
-  return <ImageGallery> {elements}</ImageGallery>;
+    </GalleryIteItem>
+  );
 }
 
 ImageGalleryItem.propTypes = {
   onClick: PropTypes.func.isRequired,
-  pictures: PropTypes.exact({
-    id: PropTypes.string.isRequired,
-    webformatURL: PropTypes.string.isRequired,
-    tag: PropTypes.string,
-    largeImageURL: PropTypes.string.isRequired,
-  }),
+  id: PropTypes.number,
+  webformatURL: PropTypes.string.isRequired,
+  tag: PropTypes.string,
+  largeImageURL: PropTypes.string.isRequired,
 };

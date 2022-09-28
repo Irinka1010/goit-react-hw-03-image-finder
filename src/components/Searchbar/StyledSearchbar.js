@@ -24,7 +24,6 @@ export const SearchbarStyled = styled.header`
     background-color: #fff;
     border-radius: 3px;
     overflow: hidden;
-
     & input {
       display: inline-block;
       width: 100%;
@@ -42,7 +41,6 @@ export const SearchbarStyled = styled.header`
       width: 48px;
       height: 48px;
       border: 0;
-
       background-size: 40%;
       background-repeat: no-repeat;
       background-position: center;

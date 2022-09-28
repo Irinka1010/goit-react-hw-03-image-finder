@@ -11,7 +11,6 @@ export default class Modal extends Component {
   }
   hendleKeydown = e => {
     if (e.code === 'Escape') {
-      console.log('rere');
       this.props.onClose();
     }
   };
