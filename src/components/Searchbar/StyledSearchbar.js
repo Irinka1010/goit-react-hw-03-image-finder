@@ -35,8 +35,6 @@ export const SearchbarStyled = styled.header`
       padding-left: 4px;
       padding-right: 4px;
       &::placeholder {
-        font: inherit;
-        font-size: 18px;
       }
     }
     & button {
@@ -44,7 +42,7 @@ export const SearchbarStyled = styled.header`
       width: 48px;
       height: 48px;
       border: 0;
-      background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+
       background-size: 40%;
       background-repeat: no-repeat;
       background-position: center;

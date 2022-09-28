@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { IoSearchSharp } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import { SearchbarStyled } from 'components/Searchbar/StyledSearchbar';
 export default class Searchbar extends Component {
@@ -29,6 +30,7 @@ export default class Searchbar extends Component {
       <SearchbarStyled>
         <form onSubmit={hendleSubmit}>
           <button type="submit">
+            <IoSearchSharp />
             <span>Search</span>
           </button>
           <input
