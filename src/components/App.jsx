@@ -24,8 +24,6 @@ export default class App extends Component {
     const prevPage = prevState.page;
     const prevName = prevState.nameImages;
     const { nameImages, page } = this.state;
-    console.log(prevName);
-    console.log(nameImages);
 
     if (prevPage !== page || prevName !== nameImages) {
       try {

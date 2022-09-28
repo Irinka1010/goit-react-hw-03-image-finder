@@ -35,8 +35,8 @@ export default class Searchbar extends Component {
           </button>
           <input
             type="text"
-            // autocomplete="off"
-            // autofocus
+            autocomplete="off"
+            autofocus
             name="nameImages"
             value={nameImages}
             placeholder="Search images and photos"
