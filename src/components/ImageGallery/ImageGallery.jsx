@@ -69,7 +69,6 @@ export default class ImageGallery extends Component {
       modalOpen: true,
       bigPicture,
     });
-    console.log(bigPicture);
   };
   closeModal = () => {
     this.setState({
@@ -90,7 +89,7 @@ export default class ImageGallery extends Component {
         {isPictures && (
           <ImageGalleryItem onClick={openModal} pictures={pictures} />
         )}
-        {isPictures && <Button changePage={loadMore} />}
+        {pictures.length >= 12 && <Button changePage={loadMore} />}
       </div>
     );
   }

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonStyled } from 'components/Button/StyledButton';
+import { ButtonStyled, Сontainer } from 'components/Button/StyledButton';
 export default function Button({ changePage }) {
   return (
-    <ButtonStyled onClick={changePage} type="button">
-      Load More
-    </ButtonStyled>
+    <Сontainer>
+      <ButtonStyled onClick={changePage} type="button">
+        Load More
+      </ButtonStyled>
+    </Сontainer>
   );
 }
 Button.propTypes = {

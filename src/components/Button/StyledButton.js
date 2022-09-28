@@ -25,3 +25,7 @@ export const ButtonStyled = styled.button`
     background-color: #303f9f;
   }
 `;
+export const Сontainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
